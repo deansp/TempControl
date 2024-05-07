@@ -14,4 +14,13 @@ public class SensorDataService {
     private final SensorDataRepository repo;
     public List<SensorData> getAllSensorData() {return repo.findAll();}
 
+    public SensorData addSensorData(SensorData newSensorData) {
+        SensorData sensorData = new SensorData(
+                newSensorData.getId(),
+                newSensorData.getTemp(),
+                newSensorData.getHumidity()
+            );
+    repo.save(sensorData);
+    return sensorData;
+    }
 }
