@@ -8,27 +8,43 @@ function App() {
     const [tempData, setTempData] = useState<string[]>([]);
     const [humidityData, setHumidityData] = useState<string[]>([]);
     const [tempDataLabel, setTempDataLabel] = useState<string[]>([]);
+    const [currentTemp, setCurrentTemp] = useState<string>("");
+    const [currentHumidity, setCurrentHumidity] = useState<string>("");
 
     function fetchData() {
         axios.get("/api/sensordata")
             .then((response) => {
-                const tempArray = response.data;
-                setTempData(tempArray.map((temp: DataItem) => temp.temp))
-                setHumidityData(tempArray.map((temp: DataItem) => temp.humidity))
+                const tempTemp = response.data.map((temp: DataItem) => temp.temp)
+                const tempHumidity = response.data.map((hum: DataItem) => hum.humidity)
+                setTempData(tempTemp)
+                setHumidityData(tempHumidity)
                 setTempDataLabel(response.data.map((label: DataItem) => label.id));
+                setCurrentTemp(tempTemp[tempTemp.length-1]);
+                setCurrentHumidity(tempHumidity[tempHumidity.length-1]);
             })
     }
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+    useEffect(() => {fetchData()}, [])
 
     return (<>
-            <LineChart tempData={tempData} humidityData={humidityData} tempDataLabel={tempDataLabel}/>
-            <LineChart tempData={tempData} humidityData={humidityData} tempDataLabel={tempDataLabel}/>
+            <h1>Temperatur-Dashboard</h1>
+            <div className={"DisplayValue"}>
+                Temperatur: {currentTemp} °C <br/>
+                Luftfeuchtigkeit: {currentHumidity} %
+            </div>
+            <div className={"lineChartContainer"}>
+                <div className={"lineChart"} >
+                <LineChart tempData={tempData} humidityData={humidityData}
+                           tempDataLabel={["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]}/>
+                </div >
+                <div className={"lineChart"} >
+                    <LineChart tempData={tempData} humidityData={humidityData} tempDataLabel={tempDataLabel}/>
+                </div>
+            </div>
         </>
     )
 }
+
 export default App
 
 
