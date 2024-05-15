@@ -27,7 +27,7 @@ function App() {
     useEffect(() => {fetchData()}, [])
 
     return (<>
-            <h1>Temperatur-Dashboard</h1>
+            <h1>Temperatur Dashboard</h1>
             <div className={"DisplayValue"}>
                 Temperatur: {currentTemp} °C <br/>
                 Luftfeuchtigkeit: {currentHumidity} %
