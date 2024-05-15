@@ -1,8 +1,8 @@
 import './App.css'
-import {useEffect, useState} from "react";
 import axios from "axios";
 import {DataItem} from "./model/sensorData.ts";
 import LineChart from "./components/LineChart.tsx";
+import {useEffect, useState} from "react";
 
 function App() {
     const [tempData, setTempData] = useState<string[]>([]);
@@ -26,9 +26,21 @@ function App() {
 
     useEffect(() => {fetchData()}, [])
 
+    function refreshData(event: React.MouseEvent<HTMLButtonElement, MouseEvent>){
+        event.defaultPrevented
+        axios.get("/api/sensordata/getRaspiValue")
+            .then((response) => {
+                setCurrentTemp(response.data.temp)
+                setCurrentHumidity(response.data.humidity)
+            }).catch(error => {
+            console.error('Fehler beim Abrufen der Sensorwerte:', error);
+        });
+    }
+
     return (<>
             <h1>Temperatur Dashboard</h1>
             <div className={"DisplayValue"}>
+                <button onClick={refreshData}>neue Daten</button>
                 Temperatur: {currentTemp} °C <br/>
                 Luftfeuchtigkeit: {currentHumidity} %
             </div>

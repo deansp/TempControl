@@ -24,4 +24,8 @@ public class SensorDataController {
         return service.addSensorData(newSensorData);
     }
 
+    @GetMapping("/getRaspiValue")
+    public String getRaspiValue() {
+        return service.getRaspiValue();
+    }
 }
