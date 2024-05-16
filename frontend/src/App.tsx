@@ -2,7 +2,7 @@ import './App.css'
 import axios from "axios";
 import {DataItem} from "./model/sensorData.ts";
 import LineChart from "./components/LineChart.tsx";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 function App() {
     const [tempData, setTempData] = useState<string[]>([]);
