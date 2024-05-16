@@ -1,18 +1,20 @@
 import './PlantCard.css'
+import {Link} from "react-router-dom";
+interface CardProps {
+    url: string;
+    name: string;
+    art: string;
+    status:string;
+}
 
-export default function PlantCard(){
+export default function PlantCard(props:Readonly<CardProps>){
     return <div className={"card"}>
-
-        <img src={"https://cdn.pixabay.com/photo/2023/09/15/12/43/living-room-8254772_1280.jpg"}
-             alt={"poster"}/>
-        <h2>Bob</h2>
+        <img src={props.url} alt={"poster"}/>
+        <h2>{props.name} <br/></h2>
         <div>
-            Canabis Okupus <br/>
-            gutes Wohlbefinden <br/>
-
-
+            {props.art} <br/><br/>
+            {props.status} <br/>
+            <Link to="/details">Details</Link>
         </div>
-
-
     </div>
 }

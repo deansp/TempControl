@@ -1,58 +1,42 @@
 body {
-  background: #c7e8bf;
-  font-family: Arial, sans-serif;
+  background: #FFF9E9;
+  font-family: "Comic Sans MS", sans-serif;
   margin: 0;
 }
 
 header{
   font-size: 2rem;
-  background: #4b781e;
-  color: #c7e8bf;
-  border-bottom: 1px groove #012A4A;
+  background: #5A8100;
+  color: #0a0202;
   box-shadow: 1px 3px 5px #012A4A;
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  background-image: url(
+  "https://cdn.pixabay.com/photo/2014/03/20/04/47/leaves-291024_1280.jpg");
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  font-weight: bold;
 }
 
 header img{
-  max-width: 150px;
+  width: 100px;
+  height: 120px;
   align-content: center;
   margin-right: 50px;
+  margin-left: 70px;
+  margin-top: 20px;
+
 }
 
 .contentBodyContainer{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background: #c7e8bf;
+  background: #FFF9E9;
   text-align: center;
 }
 
-.CardContainer{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  color: #012A4A;
 
-}
 
-.lineChart{
-  background: #f5c6a3;
-  color: #0a0202;
-  margin: 50px;
-  border-radius: 10px;
-  border: 2px solid #012A4A;
-  width: 500px;
-  height:  300px;
-  padding: 20px;
-}
 
-.DisplayValue{
-  width: 25vw;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  background-color: #c7e8bf;
-}
