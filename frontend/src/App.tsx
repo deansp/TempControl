@@ -3,7 +3,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {DataItem} from "./model/sensorData.ts";
 import LineChart from "./components/LineChart.tsx";
-
+import PlantCard from "./components/PlantCard.tsx";
+import headerPicture from "./assets/logo.png";
 function App() {
     const [tempData, setTempData] = useState<string[]>([]);
     const [humidityData, setHumidityData] = useState<string[]>([]);
@@ -27,19 +28,20 @@ function App() {
     useEffect(() => {fetchData()}, [])
 
     return (<>
-            <h1>Temperatur Dashboard</h1>
+            <header>
+                <img src={headerPicture} alt={"Logo"}/>
+                <h1>Leaf Love</h1>
+            </header>
+            <section className={"contentBodyContainer"}>
+                <div className={"CardContainer"}>
+                    <PlantCard/>
+                    <PlantCard/>
+                    <PlantCard/>
+                </div>
+            </section>
             <div className={"DisplayValue"}>
                 Temperatur: {currentTemp} °C <br/>
                 Luftfeuchtigkeit: {currentHumidity} %
-            </div>
-            <div className={"lineChartContainer"}>
-                <div className={"lineChart"} >
-                <LineChart tempData={tempData} humidityData={humidityData}
-                           tempDataLabel={["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]}/>
-                </div >
-                <div className={"lineChart"} >
-                    <LineChart tempData={tempData} humidityData={humidityData} tempDataLabel={tempDataLabel}/>
-                </div>
             </div>
         </>
     )

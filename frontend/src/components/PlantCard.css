@@ -1,0 +1,16 @@
+.card{
+    background: #c7e8bf;
+    color: #3c6222;
+    margin: 50px;
+    border-radius: 20px;
+    width: 300px;
+    height:  350px;
+    box-shadow: 1px 3px 5px #012A4A;
+}
+
+.card img {
+    width: 300px;
+    border-radius: 20px;
+
+    margin: 0;
+}

@@ -1,17 +1,40 @@
 body {
-  background: #f6ddc7;
+  background: #c7e8bf;
   font-family: Arial, sans-serif;
-
+  margin: 0;
 }
 
-h1{
-  margin: 50px;
-}
-
-.lineChartContainer{
+header{
+  font-size: 2rem;
+  background: #4b781e;
+  color: #c7e8bf;
+  border-bottom: 1px groove #012A4A;
+  box-shadow: 1px 3px 5px #012A4A;
   display: flex;
   justify-content: center;
+}
+
+header img{
+  max-width: 150px;
+  align-content: center;
+  margin-right: 50px;
+}
+
+.contentBodyContainer{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #c7e8bf;
+  text-align: center;
+}
+
+.CardContainer{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  color: #012A4A;
 
 }
 
@@ -27,7 +50,9 @@ h1{
 }
 
 .DisplayValue{
+  width: 25vw;
   display: flex;
-  justify-content: center;
+  flex-flow: column nowrap;
   align-items: center;
+  background-color: #c7e8bf;
 }
