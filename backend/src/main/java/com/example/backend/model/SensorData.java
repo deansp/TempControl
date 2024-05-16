@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SensorData {
     private final String id;
+    private final String name;
     private final String temp;
     private final String humidity;
+    private final String time;
+    private final String comment;
 }

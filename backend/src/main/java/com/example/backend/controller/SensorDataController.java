@@ -25,7 +25,7 @@ public class SensorDataController {
     }
 
     @GetMapping("/getRaspiValue")
-    public String getRaspiValue() {
+    public SensorData getRaspiValue() {
         return service.getRaspiValue();
     }
 }

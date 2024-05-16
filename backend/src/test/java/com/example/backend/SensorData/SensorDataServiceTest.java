@@ -16,7 +16,7 @@ public class SensorDataServiceTest {
     @Test
     void getAllSensorData_shouldReturn_ListWithElementTemp_whenCalled(){
         //GIVEN
-        SensorData newSensorData = new SensorData("1","30","60");
+        SensorData newSensorData = new SensorData("1","Bob","20","60","xx","xx");
         List<SensorData> expected = List.of(newSensorData);
         when(mockrepo.findAll()).thenReturn(expected);
         //WHEN
@@ -28,7 +28,7 @@ public class SensorDataServiceTest {
     @Test
     void addNewSensorData(){
         //GIVEN
-        SensorData newSensorData = new SensorData("1","30","60");
+        SensorData newSensorData = new SensorData("1","Bob","20","60","xx","xx");
         when(mockrepo.save(newSensorData)).thenReturn(newSensorData);
         //WHEN
         SensorData actual = sensorDataService.addSensorData(newSensorData);

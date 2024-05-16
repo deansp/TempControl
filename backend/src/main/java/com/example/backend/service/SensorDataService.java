@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SensorDataService {
 
-    private RestClient restClient = RestClient.builder()
+    private final RestClient restClient = RestClient.builder()
             .baseUrl("http://192.168.2.100:8080/api/send_data")
             .build();
 
@@ -22,17 +22,19 @@ public class SensorDataService {
     public SensorData addSensorData(SensorData newSensorData) {
         SensorData sensorData = new SensorData(
                 newSensorData.getId(),
+                newSensorData.getName(),
                 newSensorData.getTemp(),
-                newSensorData.getHumidity()
+                newSensorData.getHumidity(),
+                newSensorData.getTime(),
+                newSensorData.getComment()
             );
     repo.save(sensorData);
     return sensorData;
     }
 
-    public String getRaspiValue() {
-        String body = restClient.get()
+    public SensorData getRaspiValue() {
+        return restClient.get()
                 .retrieve()
-                .body(String.class);
-        return body;
+                .body(SensorData.class);
     }
 }
