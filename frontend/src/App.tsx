@@ -3,8 +3,10 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {DataItem} from "./model/sensorData.ts";
 import PlantCard from "./components/PlantCard.tsx";
-import headerPicture from "./assets/logo.png";
 import {Link, Route, Routes} from "react-router-dom";
+import LineChart from "./components/LineChart.tsx";
+import statusPic from "./assets/status.jpeg";
+
 function App() {
     const [tempData, setTempData] = useState<string[]>([]);
     const [humidityData, setHumidityData] = useState<string[]>([]);
@@ -44,10 +46,28 @@ function App() {
                     </section>
                 }/>
                 <Route path="/details" element={
-                    <div>
+                    <div className={"detailsBodyContainer"}>
+                        <div className={"ValueBodyContainer"}>
+                            <div>
+                                <img style={{width: '200px', height: '150px'}} src={pic1} alt={"poster"}/>
+                            </div>
+                            <div>
+                                <h2>Bob </h2><br/>
+                                Canabis <br/>
+                                gutes Wohlbefinden <br/><br/>
+                                Luftqualität: sehr gut <br/>
+                                Temperatur: {currentTemp} °C <br/>
+                                Luftfeuchtigkeit: {currentHumidity} %<br/>
+                            </div>
+                            <div>
+                                <img  src={statusPic} alt={"poster1"}/>
+                            </div>
+                        </div>
+                        <div className={"lineChart"}>
+                            <LineChart tempData={tempData} humidityData={humidityData}
+                                       tempDataLabel={["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]}/>
+                        </div>
                         <Link to="/">zurück</Link> <br/>
-                        Temperatur: {currentTemp} °C <br/>
-                        Luftfeuchtigkeit: {currentHumidity} %
                     </div>
                 }/>
             </Routes>
