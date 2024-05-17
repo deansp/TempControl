@@ -17,8 +17,15 @@ public class SensorDataService {
     public SensorData addSensorData(SensorData newSensorData) {
         SensorData sensorData = new SensorData(
                 newSensorData.getId(),
+                newSensorData.getName(),
+                newSensorData.getSpecies(),
+                newSensorData.getStatus(),
                 newSensorData.getTemp(),
-                newSensorData.getHumidity()
+                newSensorData.getHumidity(),
+                newSensorData.getUrl(),
+                newSensorData.getComment(),
+                newSensorData.getTempIntervall(),
+                newSensorData.getHumidityIntervall()
             );
     repo.save(sensorData);
     return sensorData;
