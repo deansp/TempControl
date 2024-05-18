@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/sensordata")
+@RequestMapping("/api/plant")
 @RequiredArgsConstructor
 public class SensorDataController {
 
@@ -17,6 +17,11 @@ public class SensorDataController {
     @GetMapping
     public List<SensorData> getSensorData() {
         return service.getAllSensorData();
+    }
+
+    @GetMapping("/{id}")
+    public SensorData getSensorDataById(@PathVariable String id) {
+        return service.getSensorDataById(id);
     }
 
     @PostMapping

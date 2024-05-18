@@ -30,4 +30,8 @@ public class SensorDataService {
     repo.save(sensorData);
     return sensorData;
     }
+
+    public SensorData getSensorDataById(String id) {
+        return repo.findById(id).orElseThrow();
+    }
 }

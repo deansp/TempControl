@@ -1,24 +1,34 @@
-import statusPic from "../assets/status.jpeg";
 import LineChart from "./LineChart.tsx";
-import {Link} from "react-router-dom";
-
+import {Link, useParams} from "react-router-dom";
+import axios from "axios";
+import {useEffect, useState} from "react";
+import {Plant} from "../model/Plant.ts";
 
 export default function Details() {
+    const params = useParams()
+    const [plant, setPlants] = useState<Plant>();
+    function fetchDataByID() {
+        axios.get("/api/plant/"+ params.id)
+            .then((response) => {
+                setPlants(response.data)
+            })}
+
+    useEffect(() => {fetchDataByID()}, [])
+
     return <div className={"detailsBodyContainer"}>
         <div className={"ValueBodyContainer"}>
             <div>
                 <img style={{width: '200px', height: '150px'}} src={""} alt={"poster"}/>
             </div>
             <div>
-                <h2>Bob </h2><br/>
-                Canabis <br/>
-                gutes Wohlbefinden <br/><br/>
-                Luftqualität: sehr gut <br/>
-                Temperatur: 22 °C <br/>
-                Luftfeuchtigkeit: 60 %<br/>
+                <h2>{plant?.name} </h2><br/>
+                {plant?.species} <br/>
+                {plant?.status} <br/><br/>
+                Temperatur: {plant?.temp} °C <br/>
+                Luftfeuchtigkeit: {plant?.humidity} %<br/>
             </div>
             <div>
-                <img src={statusPic} alt={"poster1"}/>
+                <img style={{width: '200px', height: '150px'}} src={plant?.url} alt={"poster1"}/>
             </div>
         </div>
         <div className={"lineChart"}>

@@ -9,7 +9,7 @@ import Details from "./components/Details.tsx";
 export default function App() {
     const [plants, setPlants] = useState<Plant[]>([]);
     function fetchData() {
-        axios.get("/api/sensordata")
+        axios.get("/api/plant")
             .then((response) => {
                 setPlants(response.data)
             })}
@@ -30,9 +30,7 @@ export default function App() {
                     </div>
                 }/>
                 <Route path="/details/:id" element={
-                    <div >
-                        <Details/>
-                    </div>
+                    <Details/>
                 }/>
             </Routes>
         </>
