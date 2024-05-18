@@ -18,12 +18,3 @@ h2{
     margin: 0;
 }
 
-a{
-    text-decoration: none;
-    color: #0056b3;
-    font-style: italic;
-}
-
-a:hover {
-    font-weight: bold;
-}

@@ -2,6 +2,7 @@ import statusPic from "../assets/status.jpeg";
 import LineChart from "./LineChart.tsx";
 import {Link} from "react-router-dom";
 
+
 export default function Details() {
     return <div className={"detailsBodyContainer"}>
         <div className={"ValueBodyContainer"}>
