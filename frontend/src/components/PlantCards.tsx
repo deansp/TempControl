@@ -2,7 +2,7 @@ import './PlantCards.css'
 import {Plant} from "../model/Plant.ts";
 import {Link} from "react-router-dom";
 interface CardProps {
-    id: string;
+    key: string;
     plant: Plant;
 }
 

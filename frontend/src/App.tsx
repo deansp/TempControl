@@ -4,7 +4,7 @@ import axios from "axios";
 import {Plant} from "./model/Plant.ts";
 import PlantCards from "./components/PlantCards.tsx";
 import {Route, Routes} from "react-router-dom";
-import Details from "./components/Details.tsx";
+import Details from "./Pages/Details.tsx";
 
 export default function App() {
     const [plants, setPlants] = useState<Plant[]>([]);
@@ -25,7 +25,7 @@ export default function App() {
                 <Route path="/" element={
                     <div className={"contentBodyContainer"}>
                         {plants.map((plant: Plant) => (
-                            <PlantCards plant={plant} id={plant.id}/>
+                            <PlantCards plant={plant} key={plant.id}/>
                         ))}
                     </div>
                 }/>

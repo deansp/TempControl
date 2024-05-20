@@ -1,0 +1,39 @@
+.Head{
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #3c6222;
+}
+.DetailsContainer{
+    color: #3c6222;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.plantInfo{
+    background: rgba(160, 203, 122, 0.2);
+    border-radius: 20px;
+    box-shadow: 1px 3px 5px #012A4A;
+    padding: 30px;
+}
+
+.custom-line {
+    border: none;
+    height: 3px;
+    background-color: #3c6222;
+    width: 80%;
+    margin: 50px 20% 50px  10%;
+}
+
+.SensorDataBody{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    color: #3c6222;
+}
