@@ -1,11 +1,11 @@
-import './Details.css'
+import './DetailPage.css'
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {Plant} from "../model/Plant.ts";
-import RadioButtons from "../components/Radiobutton.tsx";
+import RadioButtons from "../components/ActionContainer.tsx";
 
-export default function Details() {
+export default function DetailPage() {
     const params = useParams()
     const [plant, setPlants] = useState<Plant>({
         id: "",

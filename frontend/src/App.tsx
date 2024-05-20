@@ -4,7 +4,7 @@ import axios from "axios";
 import {Plant} from "./model/Plant.ts";
 import PlantCards from "./components/PlantCards.tsx";
 import {Route, Routes} from "react-router-dom";
-import Details from "./Pages/Details.tsx";
+import DetailPage from "./Pages/DetailPage.tsx";
 
 export default function App() {
     const [plants, setPlants] = useState<Plant[]>([]);
@@ -30,7 +30,7 @@ export default function App() {
                     </div>
                 }/>
                 <Route path="/details/:id" element={
-                    <Details/>
+                    <DetailPage/>
                 }/>
             </Routes>
         </>

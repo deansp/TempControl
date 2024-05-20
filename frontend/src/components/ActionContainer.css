@@ -5,18 +5,7 @@
     color: #3c6222;
 }
 
-.lineChart{
-    margin-top: 50px;
-    width: 500px;
-    height: 500px;
-}
 
-.lineChartContainer{
-    display: flex;
-    justify-content: space-around;
-    align-content: space-around;
-    flex-direction: row;
-}
 
 input[type="checkbox"] {
     margin-right: 10px;
@@ -35,5 +24,11 @@ label {
     justify-content: center;
     height: 100vh;
     background-color: #f0f0f0;
+}
+
+.lineChart{
+    margin-top: 50px;
+    width: 500px;
+    height: 500px;
 }
 

@@ -1,4 +1,4 @@
-import './RadioLineChart.css'
+import './ActionContainer.css'
 import {ChangeEvent, useEffect, useState} from "react";
 import LineChart from "./LineChart.tsx";
 import {Plant} from "../model/Plant.ts";
@@ -66,12 +66,9 @@ export default function RadioButtons(props:Readonly<RadioProps>) {
                     Luftqualität</label>
                 </div>
             </div>
-            <div className={"lineChartContainer"}>
-                    <div className={"lineChart"}>
-                        <LineChart Data={weekSensorData}
-                                   tempDataLabel={["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]}/>
-                    </div>
-                </div>
+            <div className={"lineChart"}>
+                <LineChart Data={weekSensorData} tempDataLabel={["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]}/>
+            </div>
         </div>
     );
 };
