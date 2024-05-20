@@ -2,6 +2,7 @@ import './RadioLineChart.css'
 import {ChangeEvent, useEffect, useState} from "react";
 import LineChart from "./LineChart.tsx";
 import {Plant} from "../model/Plant.ts";
+import ControllContainer from "./ControllContainer.tsx";
 
 interface RadioProps {
     plant: Plant;
@@ -9,7 +10,6 @@ interface RadioProps {
 export default function RadioButtons(props:Readonly<RadioProps>) {
     const [selectedOption, setSelectedOption] = useState("humidityIntervall");
     const [weekSensorData,setWeekSensorData] = useState(props.plant.humidityIntervall);
-    const [LEDStatus,setLEDStatus]=useState("aus")
 
     useEffect(() => {
         if (props.plant && props.plant.humidityIntervall) {
@@ -32,24 +32,10 @@ export default function RadioButtons(props:Readonly<RadioProps>) {
                 setWeekSensorData(props.plant.humidityIntervall)
                 break;
     }}
-    const toggleButton = () => {
-        if(LEDStatus==="aus"){setLEDStatus("an");
-        }else{setLEDStatus("aus")}}
-
 
     return (
         <div className={"body"}>
-            <div className={"buttonContainer"}>
-                <div>
-                    <button className="round-button">
-                    <img src="https://cdn.pixabay.com/photo/2012/05/07/18/11/watering-can-48878_1280.png" alt="Gießen" className="button-icon"/>
-                    </button><span>Bewässerung</span>
-                </div>
-                <div>
-                    <button className="round-button" onClick={toggleButton}>{LEDStatus}</button>
-                    <span>Beleuchtung</span>
-                </div>
-            </div>
+            <ControllContainer/>
             <div>
                 <h2>Wochenübersicht</h2> <br/>
                 <div><label>
