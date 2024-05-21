@@ -12,8 +12,10 @@ public class SensorData {
     private final String status;
     private final String temp;
     private final String humidity;
+    private final String airQuali;
     private final String url;
     private final String comment;
     private final String[] tempIntervall;
     private final String[] humidityIntervall;
+    private final String[] airQualiIntervall;
 }

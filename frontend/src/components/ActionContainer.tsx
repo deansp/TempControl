@@ -25,11 +25,9 @@ export default function RadioButtons(props:Readonly<RadioProps>) {
             case "tempIntervall":
                 setWeekSensorData(props.plant.tempIntervall)
                 break;
-            case "AirQualiIntervall":
-                setWeekSensorData(["65","60","80","75","70","60","80"])
-                break;
-            default:
-                setWeekSensorData(props.plant.humidityIntervall)
+            case "airQualiIntervall":
+                setWeekSensorData(props.plant.airQualiIntervall)
+                console.log(props.plant.airQualiIntervall)
                 break;
     }}
 
@@ -59,8 +57,8 @@ export default function RadioButtons(props:Readonly<RadioProps>) {
                 <div><label>
                     <input
                         type="radio"
-                        value="AirQualiIntervall"
-                        checked={selectedOption === 'AirQualiIntervall'}
+                        value="airQualiIntervall"
+                        checked={selectedOption === 'airQualiIntervall'}
                         onChange={handleOptionChange}
                     />
                     Luftqualität</label>

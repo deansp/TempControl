@@ -21,28 +21,93 @@ public class SensorDataIntegrationTest {
     @Test
     void expectListOfSensorData_whenCallingHttpGet() throws Exception{
         //GIVEN
-        mvc.perform(MockMvcRequestBuilders.post("/api/sensordata")
+        mvc.perform(MockMvcRequestBuilders.post("/api/plant")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("""
                                     {
-                                        "id": "1",
-                                        "temp": "60",
-                                        "humidity": "30"
+                                      "id": "1",
+                                      "name": "Bob",
+                                      "species": "Canabio Chillo",
+                                      "status": "sehr gut",
+                                      "temp": "22.0",
+                                      "humidity": "37.0",
+                                      "airQuali": "7000",
+                                      "url": "",
+                                      "comment": "Einmal die Woche, benötige ich Wasser.",
+                                      "tempIntervall": [
+                                        "20",
+                                        "21",
+                                        "23",
+                                        "20",
+                                        "22",
+                                        "23",
+                                        "22"
+                                      ],
+                                      "humidityIntervall": [
+                                        "63",
+                                        "60",
+                                        "63",
+                                        "67",
+                                        "67",
+                                        "68",
+                                        "60"
+                                      ],
+                                      "airQualiIntervall": [
+                                        "7000",
+                                        "8000",
+                                        "8000",
+                                        "9000",
+                                        "6000",
+                                        "6500",
+                                        "6600"
+                                      ]
                                     }
                                 """)
         );
-        mvc.perform((MockMvcRequestBuilders.get("/api/sensordata")))
+        mvc.perform((MockMvcRequestBuilders.get("/api/plant")))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().json(
                         """
                         [
                             {
-                            "id": "1",
-                            "temp": "60",
-                            "humidity": "30"
-                            }
+                                      "id": "1",
+                                      "name": "Bob",
+                                      "species": "Canabio Chillo",
+                                      "status": "sehr gut",
+                                      "temp": "22.0",
+                                      "humidity": "37.0",
+                                      "airQuali": "7000",
+                                      "url": "",
+                                      "comment": "Einmal die Woche, benötige ich Wasser.",
+                                      "tempIntervall": [
+                                        "20",
+                                        "21",
+                                        "23",
+                                        "20",
+                                        "22",
+                                        "23",
+                                        "22"
+                                      ],
+                                      "humidityIntervall": [
+                                        "63",
+                                        "60",
+                                        "63",
+                                        "67",
+                                        "67",
+                                        "68",
+                                        "60"
+                                      ],
+                                      "airQualiIntervall": [
+                                        "7000",
+                                        "8000",
+                                        "8000",
+                                        "9000",
+                                        "6000",
+                                        "6500",
+                                        "6600"
+                                      ]
+                                    }
                         ]
-
                         """
                 ));
     }
@@ -53,24 +118,91 @@ public class SensorDataIntegrationTest {
         //GIVEN
 
         //WHEN
-        mvc.perform(MockMvcRequestBuilders.post("/api/sensordata")
+        mvc.perform(MockMvcRequestBuilders.post("/api/plant")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("""
                             {
-                                "id": "1",
-                                "temp": "60",
-                                "humidity": "30"
-                            }
+                                      "id": "1",
+                                      "name": "Bob",
+                                      "species": "Canabio Chillo",
+                                      "status": "sehr gut",
+                                      "temp": "22.0",
+                                      "humidity": "37.0",
+                                      "airQuali": "7000",
+                                      "url": "",
+                                      "comment": "Einmal die Woche, benötige ich Wasser.",
+                                      "tempIntervall": [
+                                        "20",
+                                        "21",
+                                        "23",
+                                        "20",
+                                        "22",
+                                        "23",
+                                        "22"
+                                      ],
+                                      "humidityIntervall": [
+                                        "63",
+                                        "60",
+                                        "63",
+                                        "67",
+                                        "67",
+                                        "68",
+                                        "60"
+                                      ],
+                                      "airQualiIntervall": [
+                                        "7000",
+                                        "8000",
+                                        "8000",
+                                        "9000",
+                                        "6000",
+                                        "6500",
+                                        "6600"
+                                      ]
+                                    }
                         """)
         )
         //THEN
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().json("""
+                    
                     {
-                        "id": "1",
-                        "temp": "60",
-                        "humidity": "30"
-                    }
+                                      "id": "1",
+                                      "name": "Bob",
+                                      "species": "Canabio Chillo",
+                                      "status": "sehr gut",
+                                      "temp": "22.0",
+                                      "humidity": "37.0",
+                                      "airQuali": "7000",
+                                      "url": "",
+                                      "comment": "Einmal die Woche, benötige ich Wasser.",
+                                      "tempIntervall": [
+                                        "20",
+                                        "21",
+                                        "23",
+                                        "20",
+                                        "22",
+                                        "23",
+                                        "22"
+                                      ],
+                                      "humidityIntervall": [
+                                        "63",
+                                        "60",
+                                        "63",
+                                        "67",
+                                        "67",
+                                        "68",
+                                        "60"
+                                      ],
+                                      "airQualiIntervall": [
+                                        "7000",
+                                        "8000",
+                                        "8000",
+                                        "9000",
+                                        "6000",
+                                        "6500",
+                                        "6600"
+                                      ]
+                                    }‚
                 """))
         .andExpect(MockMvcResultMatchers.jsonPath("$.id").isNotEmpty());
     }

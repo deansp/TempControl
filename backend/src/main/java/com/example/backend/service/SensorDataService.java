@@ -22,10 +22,12 @@ public class SensorDataService {
                 newSensorData.getStatus(),
                 newSensorData.getTemp(),
                 newSensorData.getHumidity(),
+                newSensorData.getAirQuali(),
                 newSensorData.getUrl(),
                 newSensorData.getComment(),
                 newSensorData.getTempIntervall(),
-                newSensorData.getHumidityIntervall()
+                newSensorData.getHumidityIntervall(),
+                newSensorData.getAirQualiIntervall()
             );
     repo.save(sensorData);
     return sensorData;

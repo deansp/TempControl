@@ -14,10 +14,12 @@ export default function DetailPage() {
         status: "",
         temp: "",
         humidity: "",
+        airQuali:"",
         url: "",
         comment: "",
         tempIntervall: [],
-        humidityIntervall: []
+        humidityIntervall: [],
+        airQualiIntervall:[]
     })
     function fetchDataByID() {
         axios.get("/api/plant/"+ params.id)
@@ -41,10 +43,10 @@ export default function DetailPage() {
             </div>
             <div className={"plantInfo"}>
                 <h3>Planzenbefinden:</h3>
-                {plant?.status}<br/><br/>
+                {plant.status}<br/><br/>
                 Temperatur: {plant.temp} °C <br/>
                 Feuchtigkeit: {plant.humidity} %<br/>
-                Luftqualität:
+                Luftqualität: {plant.airQuali} ppm
             </div>
         </div>
         <hr className="custom-line"/>

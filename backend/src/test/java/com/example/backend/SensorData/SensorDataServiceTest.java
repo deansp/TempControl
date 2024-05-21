@@ -25,8 +25,11 @@ public class SensorDataServiceTest {
                 "60",
                 "img",
                 "stark",
+                "huhu",
                 new String[]{"[30,60]"},
-                new String[]{"[30,60]"});
+                new String[]{"[30,60]"},
+                new String[]{"[30,60]"}
+        );
 
         List<SensorData> expected = List.of(newSensorData);
         when(mockrepo.findAll()).thenReturn(expected);
@@ -48,8 +51,11 @@ public class SensorDataServiceTest {
                 "60",
                 "img",
                 "stark",
+                "huhu",
                 new String[]{"[30,60]"},
-                new String[]{"[30,60]"});
+                new String[]{"[30,60]"},
+                new String[]{"[30,60]"}
+        );
         when(mockrepo.save(newSensorData)).thenReturn(newSensorData);
         //WHEN
         SensorData actual = sensorDataService.addSensorData(newSensorData);
