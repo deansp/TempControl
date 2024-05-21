@@ -1,33 +1,52 @@
 body {
-  background: #f6ddc7;
-  font-family: Arial, sans-serif;
-
+  background: #FFF9E9;
+  font-family: "Comic Sans MS", sans-serif;
+  margin: 0;
 }
 
-h1{
-  margin: 50px;
-}
-
-.lineChartContainer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.lineChart{
-  background: #f5c6a3;
+header{
+  font-size: 2rem;
+  background: #5A8100;
   color: #0a0202;
-  margin: 50px;
-  border-radius: 10px;
-  border: 2px solid #012A4A;
-  width: 500px;
-  height:  300px;
-  padding: 20px;
+  box-shadow: 1px 3px 5px #012A4A;
+  display: flex;
+  justify-content: left;
+  background-image: url(
+  "https://cdn.pixabay.com/photo/2014/03/20/04/47/leaves-291024_1280.jpg");
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  font-weight: bold;
 }
 
-.DisplayValue{
+header img{
+  width: 100px;
+  height: 120px;
+  align-content: center;
+  margin-right: 50px;
+  margin-left: 70px;
+  margin-top: 20px;
+}
+
+.contentBodyContainer{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  background: #FFF9E9;
+  text-align: center;
   align-items: center;
 }
+
+a{
+  text-decoration: none;
+  color: #0056b3;
+  font-style: italic;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+
+
+

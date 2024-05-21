@@ -6,24 +6,29 @@ import {
     LinearScale,
     LineElement,
     PointElement,
-    Title,
     Tooltip
 } from "chart.js";
 
 interface LineChartProps {
-    tempData: String[];
-    humidityData: String[];
+    Data: String[];
     tempDataLabel: String[];
 }
-ChartJS.register(CategoryScale,LinearScale,PointElement,LineElement,Title,Tooltip,Legend)
 
-export default function LineChart(props:Readonly<LineChartProps>){
-    const lineChartsData ={
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend)
+
+export default function LineChart(props: Readonly<LineChartProps>) {
+    const lineChartsData = {
         labels: props.tempDataLabel,
-        datasets:[{label:"Temperatur", data:props.tempData,borderColor:"rgb(75,192,192)"},
-            {label:"Feuchtigkeit", data:props.humidityData,borderColor:"rgb(192,85,75)"}],
-
+        datasets: [{label: "",data: props.Data,borderColor: "rgb(60,98,34)"}],
     }
-    const options = {};
-    return <Line options={options} data={lineChartsData}/>
+    const options = {
+        plugins: {legend: {position: 'bottom'}},
+        scales: {
+            x: {grid: {display: false}},
+            y: {grid: {display: false}}}
+    };
+
+    return <div>
+            <Line options={options} data={lineChartsData}/>
+        </div>
 }

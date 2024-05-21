@@ -1,50 +1,41 @@
 import './App.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {DataItem} from "./model/sensorData.ts";
-import LineChart from "./components/LineChart.tsx";
+import {Plant} from "./model/Plant.ts";
+import PlantCards from "./components/PlantCards.tsx";
+import {Route, Routes} from "react-router-dom";
+import DetailPage from "./Pages/DetailPage.tsx";
 
-function App() {
-    const [tempData, setTempData] = useState<string[]>([]);
-    const [humidityData, setHumidityData] = useState<string[]>([]);
-    const [tempDataLabel, setTempDataLabel] = useState<string[]>([]);
-    const [currentTemp, setCurrentTemp] = useState<string>("");
-    const [currentHumidity, setCurrentHumidity] = useState<string>("");
-
+export default function App() {
+    const [plants, setPlants] = useState<Plant[]>([]);
     function fetchData() {
-        axios.get("/api/sensordata")
+        axios.get("/api/plant")
             .then((response) => {
-                const tempTemp = response.data.map((temp: DataItem) => temp.temp)
-                const tempHumidity = response.data.map((hum: DataItem) => hum.humidity)
-                setTempData(tempTemp)
-                setHumidityData(tempHumidity)
-                setTempDataLabel(response.data.map((label: DataItem) => label.id));
-                setCurrentTemp(tempTemp[tempTemp.length-1]);
-                setCurrentHumidity(tempHumidity[tempHumidity.length-1]);
-            })
-    }
+                setPlants(response.data)
+            })}
 
     useEffect(() => {fetchData()}, [])
 
     return (<>
-            <h1>Temperatur Dashboard</h1>
-            <div className={"DisplayValue"}>
-                Temperatur: {currentTemp} °C <br/>
-                Luftfeuchtigkeit: {currentHumidity} %
-            </div>
-            <div className={"lineChartContainer"}>
-                <div className={"lineChart"} >
-                <LineChart tempData={tempData} humidityData={humidityData}
-                           tempDataLabel={["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]}/>
-                </div >
-                <div className={"lineChart"} >
-                    <LineChart tempData={tempData} humidityData={humidityData} tempDataLabel={tempDataLabel}/>
-                </div>
-            </div>
+            <header>
+                <img src={"https://cdn.pixabay.com/photo/2021/08/16/00/23/bonsai-tree-6548982_1280.png"} alt={"Logo"}/>
+                <h1>Leaf Love</h1>
+            </header>
+            <Routes>
+                <Route path="/" element={
+                    <div className={"contentBodyContainer"}>
+                        {plants.map((plant: Plant) => (
+                            <PlantCards plant={plant} key={plant.id}/>
+                        ))}
+                    </div>
+                }/>
+                <Route path="/details/:id" element={
+                    <DetailPage/>
+                }/>
+            </Routes>
         </>
     )
 }
 
-export default App
 
 

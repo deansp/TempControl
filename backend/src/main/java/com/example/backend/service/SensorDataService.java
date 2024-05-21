@@ -17,10 +17,23 @@ public class SensorDataService {
     public SensorData addSensorData(SensorData newSensorData) {
         SensorData sensorData = new SensorData(
                 newSensorData.getId(),
+                newSensorData.getName(),
+                newSensorData.getSpecies(),
+                newSensorData.getStatus(),
                 newSensorData.getTemp(),
-                newSensorData.getHumidity()
+                newSensorData.getHumidity(),
+                newSensorData.getAirQuali(),
+                newSensorData.getUrl(),
+                newSensorData.getComment(),
+                newSensorData.getTempIntervall(),
+                newSensorData.getHumidityIntervall(),
+                newSensorData.getAirQualiIntervall()
             );
     repo.save(sensorData);
     return sensorData;
+    }
+
+    public SensorData getSensorDataById(String id) {
+        return repo.findById(id).orElseThrow();
     }
 }
