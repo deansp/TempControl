@@ -22,7 +22,7 @@ export default function DetailPage() {
         airQualiIntervall:[]
     })
     function fetchDataByID() {
-        axios.get("/api/plant/"+ params.id)
+        axios.get("/api/plant/detail/"+ params.id)
             .then((response) => {
                 setPlants(response.data)
             })}
@@ -51,6 +51,6 @@ export default function DetailPage() {
         </div>
         <hr className="custom-line"/>
         <RadioButtons plant={plant}/>
-        <Link to="/">zurück</Link> <br/>
+        <Link to="/home">zurück</Link> <br/>
     </div>
 }
