@@ -5,18 +5,51 @@ body {
 }
 
 header{
-  font-size: 2rem;
-  background: #5A8100;
-  color: #0a0202;
   box-shadow: 1px 3px 5px #012A4A;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   background-image: url(
   "https://cdn.pixabay.com/photo/2014/03/20/04/47/leaves-291024_1280.jpg");
   background-position: center;
   background-size: cover;
   opacity: 0.8;
+}
+
+.headline{
+  font-size: 2rem;
+  color: #0a0202;
+  display: flex;
+  justify-content: left;
   font-weight: bold;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.user{
+  display: flex;
+  justify-content: right;
+  margin: 20px;
+  font-size: 1.2rem;
+  flex-direction: column;
+  font-family: "Comic Sans MS", sans-serif;
+  align-content: flex-end;
+}
+.user button{
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #0a0202;
+  border: 0px solid #0a0202;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+.user button:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+  border-color: black;
 }
 
 header img{

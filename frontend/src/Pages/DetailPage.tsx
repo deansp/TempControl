@@ -38,7 +38,7 @@ export default function DetailPage() {
                 <img style={{width: '300px'}} src={plant.url} alt={"plant"}/>
             </div>
             <div>
-                <h3>Infos:</h3>
+                <br/><br/><br/>
                 {plant.comment}
             </div>
             <div className={"plantInfo"}>

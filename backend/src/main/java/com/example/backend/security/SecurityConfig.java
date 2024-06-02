@@ -3,6 +3,7 @@ package com.example.backend.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,7 +23,7 @@ public class SecurityConfig {
     public InMemoryUserDetailsManager userDetailsManager(){
         return new InMemoryUserDetailsManager(
                 User.builder()
-                        .username("Max")
+                        .username("Dean")
                         .password("123")
                         .roles("ADMIN")
                         .build()
@@ -44,6 +45,13 @@ public class SecurityConfig {
                 })
                 .sessionManagement(c->c.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .httpBasic(Customizer.withDefaults())
+                .logout(logout->logout.logoutUrl("/api/user/logout")
+                        .logoutSuccessHandler((request, response, authentication)->response.setStatus(200)))
+                .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
+                        httpSecurityExceptionHandlingConfigurer
+                                .authenticationEntryPoint((request, response, authException) ->
+                                        response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase())))
                 .build();
+
     }
 }
