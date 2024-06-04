@@ -44,13 +44,12 @@ public class SecurityConfig {
                     request.anyRequest().permitAll();
                 })
                 .sessionManagement(c->c.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
-                .httpBasic(Customizer.withDefaults())
+                .httpBasic(c ->{
+                    c.authenticationEntryPoint(((request, response, authException) -> response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase())));
+                    c.init(httpSecurity);
+                })
                 .logout(logout->logout.logoutUrl("/api/user/logout")
                         .logoutSuccessHandler((request, response, authentication)->response.setStatus(200)))
-                .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
-                        httpSecurityExceptionHandlingConfigurer
-                                .authenticationEntryPoint((request, response, authException) ->
-                                        response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase())))
                 .build();
 
     }

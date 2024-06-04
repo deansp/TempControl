@@ -3,7 +3,11 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import './LoginPage.css'
 
-export default function LoginPage(){
+type LoginPageProps = {
+    setUser: React.Dispatch<React.SetStateAction<string | undefined>>;
+};
+
+export default function LoginPage({ setUser }: LoginPageProps) {
     const[username,setUsername] = useState<string>("")
     const[password,setPassword] = useState<string>("")
     const navigate = useNavigate()
@@ -11,12 +15,11 @@ export default function LoginPage(){
     function onSubmitLogin(e:FormEvent<HTMLFormElement>){
         e.preventDefault()
         axios.post("/api/user/login",undefined,{auth:{username,password}})
-            .then(()=>{
-                    navigate("/home");
-                    window.location.reload();
+            .then(response => {
+                setUser(response.data);
+                navigate("/home");
             })
     }
-
 
     return (<form onSubmit={onSubmitLogin}>
             <div className={"form"}>

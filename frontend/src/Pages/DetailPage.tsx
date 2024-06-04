@@ -34,7 +34,7 @@ export default function DetailPage() {
             {plant.species}
         </div>
         <div className={"DetailsContainer"}>
-            <div>
+            <div className={"imgContainer"}>
                 <img style={{width: '300px'}} src={plant.url} alt={"plant"}/>
             </div>
             <div>

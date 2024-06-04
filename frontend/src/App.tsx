@@ -3,14 +3,16 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {Plant} from "./model/Plant.ts";
 import PlantCards from "./components/PlantCards.tsx";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useNavigate} from "react-router-dom";
 import DetailPage from "./Pages/DetailPage.tsx";
 import LoginPage from "./Pages/LoginPage.tsx";
 import ProtectedRoute from "./Pages/ProtectedRoute.tsx";
 
+
 export default function App() {
     const [plants, setPlants] = useState<Plant[]>([]);
     const [user, setUser] = useState<string | undefined>("")
+    const navigate = useNavigate()
 
     function fetchData() {
         axios.get("/api/plant")
@@ -28,10 +30,13 @@ export default function App() {
             .then(response=>
             setUser(response.data))
     }
-
     function logout(){
         axios.post("/api/user/logout")
-            .then(response => getUser())
+            .then(() => {
+                getUser();
+                navigate("/");
+                })
+
     }
     return (<>
             <header>
@@ -45,20 +50,18 @@ export default function App() {
                 </div>
             </header>
             <Routes>
-                <Route path="/" element={
-                    <LoginPage/>
-                }/>
-                <Route element={<ProtectedRoute user={user}/>}>
+                <Route path="/" element={<LoginPage setUser={setUser} />} />
+                <Route element={<ProtectedRoute user={user} />}>
                     <Route path="/home" element={
                         <div className={"contentBodyContainer"}>
                             {plants.map((plant: Plant) => (
-                                <PlantCards plant={plant} key={plant.id}/>
+                                <PlantCards plant={plant} key={plant.id} />
                             ))}
                         </div>
-                    }/>
-                    <Route path="/details/:id" element={
-                        <DetailPage/>
-                    }/>
+                    } />
+                </Route>
+                <Route element={<ProtectedRoute user={user} />}>
+                    <Route path="/details/:id" element={<DetailPage />} />
                 </Route>
             </Routes>
         </>
