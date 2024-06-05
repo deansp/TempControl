@@ -1,0 +1,19 @@
+.form{
+    margin: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #3c6222;
+
+}
+
+.form button{
+    font-family: "Comic Sans MS", sans-serif;
+    margin: 5px;
+}
+
+.form input{
+    font-family: "Comic Sans MS", sans-serif;
+    margin: 5px;
+}

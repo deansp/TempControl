@@ -22,7 +22,7 @@ export default function DetailPage() {
         airQualiIntervall:[]
     })
     function fetchDataByID() {
-        axios.get("/api/plant/"+ params.id)
+        axios.get("/api/plant/detail/"+ params.id)
             .then((response) => {
                 setPlants(response.data)
             })}
@@ -34,11 +34,11 @@ export default function DetailPage() {
             {plant.species}
         </div>
         <div className={"DetailsContainer"}>
-            <div>
+            <div className={"imgContainer"}>
                 <img style={{width: '300px'}} src={plant.url} alt={"plant"}/>
             </div>
             <div>
-                <h3>Infos:</h3>
+                <br/><br/><br/>
                 {plant.comment}
             </div>
             <div className={"plantInfo"}>
@@ -51,6 +51,6 @@ export default function DetailPage() {
         </div>
         <hr className="custom-line"/>
         <RadioButtons plant={plant}/>
-        <Link to="/">zurück</Link> <br/>
+        <Link to="/home">zurück</Link> <br/>
     </div>
 }

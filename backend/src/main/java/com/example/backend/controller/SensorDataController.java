@@ -14,12 +14,12 @@ public class SensorDataController {
 
     private final SensorDataService service;
 
-    @GetMapping
+    @GetMapping()
     public List<SensorData> getSensorData() {
         return service.getAllSensorData();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/detail/{id}")
     public SensorData getSensorDataById(@PathVariable String id) {
         return service.getSensorDataById(id);
     }
